@@ -26,9 +26,7 @@ class _ClientManagementPageState extends State<ClientManagementPage> {
     setState(() {
       _isLoading = true;
     });
-    if (widget.extra is Map<String, dynamic>) {
-      userName = (widget.extra as Map<String, dynamic>)["userName"] ?? "";
-    }
+    if (widget.extra is Map<String, dynamic>) {}
     await _loadClients();
     setState(() {
       _isLoading = false;
@@ -52,16 +50,18 @@ class _ClientManagementPageState extends State<ClientManagementPage> {
 
   @override
   Widget build(BuildContext context) {
+    final sortedClients = [..._clients]
+      ..sort((a, b) => (a["name"] ?? "").compareTo(b["name"] ?? ""));
     return Scaffold(
-      appBar: customAppBar(context, "Client Management", userName),
+      appBar: customAppBar(context, "Client Management"),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : _clients.isEmpty
           ? const Center(child: Text("No clients found."))
           : ListView.builder(
-              itemCount: _clients.length,
+              itemCount: sortedClients.length,
               itemBuilder: (context, index) {
-                final client = _clients[index];
+                final client = sortedClients[index];
                 return Card(
                   margin: const EdgeInsets.symmetric(
                     horizontal: 12,

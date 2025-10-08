@@ -43,7 +43,7 @@ class _ClientHomePageState extends State<ClientHomePage> {
   Widget build(BuildContext context) {
     return UpScaffold(
       scaffoldKey: _scaffoldKey,
-      appBar: customAppBar(context, 'Trust Track', userData['name'] ?? ''),
+      appBar: customAppBar(context, 'Trust Track'),
       body: SafeArea(
         child: isLoading
             ? const Center(child: UpCircularProgress())

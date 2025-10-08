@@ -47,7 +47,7 @@ class _AgentHomePageState extends State<AgentHomePage> {
   Widget build(BuildContext context) {
     return UpScaffold(
       scaffoldKey: _scaffoldKey,
-      appBar: customAppBar(context, 'Trust Track', userData['name'] ?? ''),
+      appBar: customAppBar(context, 'Trust Track'),
       body: SafeArea(
         child: isLoading
             ? const Center(child: UpCircularProgress())
@@ -95,14 +95,13 @@ class _AgentHomePageState extends State<AgentHomePage> {
                       onTap: () {
                         ServiceManager<UpNavigationService>().navigateToNamed(
                           Routes.clientManagementPage,
-                          extra: {'userName': '${userData['name']}'},
                         );
                       },
                     ),
                     const SizedBox(height: 16),
                     HomeCardWidget(
-                      icon: Icons.insert_chart,
-                      title: "Reports",
+                      icon: Icons.report_gmailerrorred,
+                      title: "Report",
                       iconColor: UpConfig.of(context).theme.primaryColor,
                       onTap: () {
                         // Navigate to reports page

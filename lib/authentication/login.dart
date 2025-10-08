@@ -26,6 +26,7 @@ class _LoginPageState extends State<LoginPage> {
   String password = "";
   String condition = "";
   final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _numberController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _passwordVisible = false;

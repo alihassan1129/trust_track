@@ -82,6 +82,8 @@ class AuthService {
   Future<void> logout() async {
     try {
       await _auth.signOut();
+      _cachedRole = null; // reset cached role
+      print("✅ Logout successful, role cache cleared");
     } catch (e) {
       print("⚠️ Logout error: $e");
     }

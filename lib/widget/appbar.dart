@@ -5,11 +5,7 @@ import 'package:trust_track/constants.dart';
 import 'package:flutter_up/services/up_navigation.dart';
 import 'package:flutter_up/locator.dart';
 
-PreferredSizeWidget customAppBar(
-  BuildContext context,
-  String title,
-  String? userName,
-) {
+PreferredSizeWidget customAppBar(BuildContext context, String title) {
   final user = FirebaseAuth.instance.currentUser;
 
   return AppBar(
