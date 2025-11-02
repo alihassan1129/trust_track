@@ -12,6 +12,8 @@ class Routes {
   static const String agentHomeage = "/agent-homepage";
   static const String clientHomepage = "/client-homepage";
   static const String clientManagementPage = "/client-management";
+  static const String policyPage = "/policies";
+  static const String subscribedPolicyPage = "/subscribed-policies";
   static const String login = "/login";
   static const String signup = "/signup";
 }

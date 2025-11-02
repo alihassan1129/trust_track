@@ -8,6 +8,8 @@ import 'package:trust_track/pages/agent/agent_homepage.dart';
 import 'package:trust_track/pages/client/client_homepage.dart';
 import 'package:trust_track/pages/client_managment_page.dart';
 import 'package:trust_track/pages/initial_page.dart';
+import 'package:trust_track/pages/policies_page.dart';
+import 'package:trust_track/pages/subscribed_policies_page.dart';
 import 'package:trust_track/theme/light_theme.dart';
 
 class MyApp extends StatefulWidget {
@@ -62,6 +64,20 @@ class _MyAppState extends State<MyApp> {
               return ClientManagementPage(extra: state.extra);
             },
             name: Routes.clientManagementPage,
+          ),
+          UpRoute(
+            path: Routes.policyPage,
+            pageBuilder: (BuildContext context, UpRouterState state) {
+              return PoliciesPage(extra: state.extra);
+            },
+            name: Routes.policyPage,
+          ),
+          UpRoute(
+            path: Routes.subscribedPolicyPage,
+            pageBuilder: (BuildContext context, UpRouterState state) {
+              return SubscribedPoliciesPage();
+            },
+            name: Routes.subscribedPolicyPage,
           ),
         ],
         title: 'Trust Track',

@@ -83,6 +83,16 @@ class _AgentHomePageState extends State<AgentHomePage> {
                                 textFontFamily: 'Poppins',
                               ),
                             ),
+                            UpText(
+                              "ID: ${userData['user_id']}",
+                              style: UpStyle(
+                                textSize: 12,
+                                textColor: UpConfig.of(
+                                  context,
+                                ).theme.baseColor.shade500,
+                                textFontFamily: 'Sora',
+                              ),
+                            ),
                           ],
                         ),
                       ],
@@ -100,11 +110,13 @@ class _AgentHomePageState extends State<AgentHomePage> {
                     ),
                     const SizedBox(height: 16),
                     HomeCardWidget(
-                      icon: Icons.report_gmailerrorred,
-                      title: "Report",
+                      icon: Icons.policy,
+                      title: "Policies",
                       iconColor: UpConfig.of(context).theme.primaryColor,
                       onTap: () {
-                        // Navigate to reports page
+                        ServiceManager<UpNavigationService>().navigateToNamed(
+                          Routes.policyPage,
+                        );
                       },
                     ),
                   ],

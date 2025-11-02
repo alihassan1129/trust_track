@@ -1,12 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_up/config/up_config.dart';
+import 'package:flutter_up/locator.dart';
+import 'package:flutter_up/services/up_navigation.dart';
 import 'package:flutter_up/themes/up_style.dart';
 import 'package:flutter_up/widgets/up_circualar_progress.dart';
 import 'package:flutter_up/widgets/up_scaffold.dart';
 import 'package:flutter_up/widgets/up_text.dart';
+import 'package:trust_track/constants.dart';
 import 'package:trust_track/services/auth_service.dart';
 import 'package:trust_track/widget/appbar.dart';
+import 'package:trust_track/widget/home_card_widget.dart';
 
 class ClientHomePage extends StatefulWidget {
   const ClientHomePage({super.key});
@@ -83,6 +87,17 @@ class _ClientHomePageState extends State<ClientHomePage> {
                             ],
                           ),
                         ],
+                      ),
+                      const SizedBox(height: 16),
+                      HomeCardWidget(
+                        icon: Icons.policy,
+                        title: "Policies",
+                        iconColor: UpConfig.of(context).theme.primaryColor,
+                        onTap: () {
+                          ServiceManager<UpNavigationService>().navigateToNamed(
+                            Routes.policyPage,
+                          );
+                        },
                       ),
                     ],
                   ),
