@@ -108,6 +108,18 @@ class _AgentHomePageState extends State<AgentHomePage> {
                         );
                       },
                     ),
+                    HomeCardWidget(
+                      icon: Icons.receipt_long_rounded,
+                      title: "Records",
+                      iconColor: UpConfig.of(context).theme.primaryColor,
+                      onTap: () {
+                        ServiceManager<UpNavigationService>().navigateToNamed(
+                          Routes.agentRecordsPage,
+                          extra: {'agentId': userData['user_id']},
+                        );
+                      },
+                    ),
+
                     const SizedBox(height: 16),
                     HomeCardWidget(
                       icon: Icons.policy,

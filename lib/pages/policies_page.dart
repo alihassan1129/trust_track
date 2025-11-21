@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_up/config/up_config.dart';
 import 'package:flutter_up/locator.dart';
 import 'package:flutter_up/services/up_navigation.dart';
 import 'package:trust_track/constants.dart';
@@ -709,6 +710,14 @@ class _PoliciesPageState extends State<PoliciesPage> {
                                     ),
                                   ),
                                 ),
+                                if (_userRole == "agent")
+                                Container(
+                                  decoration: BoxDecoration(border: Border.all(color: UpConfig.of(context).theme.primaryColor),color: const Color.fromARGB(255, 247, 238, 255), borderRadius: BorderRadius.circular(8)),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                                    child: Text(policy.commission,style: TextStyle(fontFamily: 'Poppins', fontSize: 12, color: UpConfig.of(context).theme.primaryColor),),
+                                  ),
+                                )
                             ],
                           ),
                         ),
