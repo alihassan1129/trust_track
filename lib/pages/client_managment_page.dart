@@ -6,8 +6,7 @@ import 'package:trust_track/services/client_service.dart';
 import 'package:trust_track/widget/appbar.dart';
 
 class ClientManagementPage extends StatefulWidget {
-  final Object? extra;
-  const ClientManagementPage({super.key, this.extra});
+  const ClientManagementPage({super.key});
 
   @override
   State<ClientManagementPage> createState() => _ClientManagementPageState();
@@ -48,12 +47,12 @@ class _ClientManagementPageState extends State<ClientManagementPage> {
       final name = (client["name"] ?? "").toString().toLowerCase();
       final email = (client["email"] ?? "").toString().toLowerCase();
       final query = searchQuery.toLowerCase();
-
       return name.contains(query) || email.contains(query);
     }).toList();
 
     return Scaffold(
       appBar: customAppBar(context, "Client Management"),
+      backgroundColor: const Color(0xFFF8F9FB),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
           : Column(
@@ -68,15 +67,20 @@ class _ClientManagementPageState extends State<ClientManagementPage> {
                       Text(
                         "Your Clients",
                         style: TextStyle(
-                          fontSize: 24,
+                          fontSize: 26,
                           fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 50, 50, 50),
+                          fontFamily: 'Sora',
+                          color: Color(0xFF2E2E2E),
                         ),
                       ),
                       SizedBox(height: 4),
                       Text(
                         "Manage and view all clients linked to your account",
-                        style: TextStyle(fontSize: 14, color: Colors.grey),
+                        style: TextStyle(
+                          fontSize: 15,
+                          fontFamily: 'Poppins',
+                          color: Color(0xFF6B6B6B),
+                        ),
                       ),
                     ],
                   ),
@@ -86,25 +90,38 @@ class _ClientManagementPageState extends State<ClientManagementPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
-                    vertical: 4,
+                    vertical: 8,
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Search clients...",
-                      prefixIcon: const Icon(Icons.search),
-                      filled: true,
-                      fillColor: Colors.white,
-                      contentPadding: const EdgeInsets.symmetric(vertical: 12),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(12),
-                        borderSide: BorderSide.none,
+                  child: Material(
+                    elevation: 2,
+                    borderRadius: BorderRadius.circular(12),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        hintText: "Search clients...",
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          color: Colors.grey,
+                        ),
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding: const EdgeInsets.symmetric(
+                          vertical: 14,
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(12),
+                          borderSide: BorderSide.none,
+                        ),
                       ),
+                      style: const TextStyle(
+                        fontFamily: 'Poppins',
+                        fontSize: 14,
+                      ),
+                      onChanged: (value) {
+                        setState(() {
+                          searchQuery = value;
+                        });
+                      },
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        searchQuery = value;
-                      });
-                    },
                   ),
                 ),
 
@@ -116,7 +133,11 @@ class _ClientManagementPageState extends State<ClientManagementPage> {
                       ? const Center(
                           child: Text(
                             "No clients found.",
-                            style: TextStyle(fontSize: 16, color: Colors.grey),
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontFamily: 'Poppins',
+                              color: Colors.grey,
+                            ),
                           ),
                         )
                       : ListView.builder(
@@ -124,17 +145,14 @@ class _ClientManagementPageState extends State<ClientManagementPage> {
                           itemCount: filteredClients.length,
                           itemBuilder: (context, index) {
                             final client = filteredClients[index];
-
                             return GestureDetector(
                               onTap: () {
-                                  ServiceManager<UpNavigationService>()
-                                      .navigateToNamed(
-                                    Routes.clientSubscriptionsPage,
-                                    extra: {
-                                      'clientId': client["id"]
-                                    },
-                                  );
-                                },
+                                ServiceManager<UpNavigationService>()
+                                    .navigateToNamed(
+                                      Routes.clientSubscriptionsPage,
+                                      extra: {'clientId': client["id"]},
+                                    );
+                              },
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 16,
@@ -146,8 +164,8 @@ class _ClientManagementPageState extends State<ClientManagementPage> {
                                     borderRadius: BorderRadius.circular(14),
                                     boxShadow: [
                                       BoxShadow(
-                                        color: Colors.grey.withOpacity(0.12),
-                                        blurRadius: 8,
+                                        color: Colors.black12,
+                                        blurRadius: 6,
                                         spreadRadius: 1,
                                         offset: const Offset(0, 3),
                                       ),
@@ -169,21 +187,25 @@ class _ClientManagementPageState extends State<ClientManagementPage> {
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 20,
+                                          fontFamily: 'Poppins',
                                         ),
                                       ),
                                     ),
                                     title: Text(
                                       client["name"] ?? "No Name",
                                       style: const TextStyle(
-                                        fontSize: 18,
+                                        fontSize: 17,
                                         fontWeight: FontWeight.w600,
+                                        fontFamily: 'Sora',
+                                        color: Color(0xFF2E2E2E),
                                       ),
                                     ),
                                     subtitle: Text(
                                       client["email"] ?? "No Email",
                                       style: const TextStyle(
                                         fontSize: 14,
-                                        color: Colors.grey,
+                                        fontFamily: 'Poppins',
+                                        color: Color(0xFF6B6B6B),
                                       ),
                                     ),
                                     trailing: const Icon(

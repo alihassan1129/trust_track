@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_up/themes/up_style.dart';
+import 'package:trust_track/constants.dart';
 import 'package:trust_track/services/policies_services.dart';
 import 'package:trust_track/services/subscription_service.dart';
 import 'package:trust_track/widget/appbar.dart';
@@ -59,8 +60,7 @@ class _ViewClientSubscriptionsPageState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF4F5F7),
-      appBar: customAppBar(context, "Client Subscriptions"),
+      appBar: customAppBar(context, "Client Subscriptions", backRoute: Routes.clientManagementPage),
       body: isLoading
           ? const Center(child: CircularProgressIndicator())
           : subscriptions.isEmpty

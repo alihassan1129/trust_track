@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
           UpRoute(
             path: Routes.clientManagementPage,
             pageBuilder: (BuildContext context, UpRouterState state) {
-              return ClientManagementPage(extra: state.extra);
+              return ClientManagementPage();
             },
             name: Routes.clientManagementPage,
           ),
