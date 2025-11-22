@@ -108,6 +108,7 @@ class _AgentHomePageState extends State<AgentHomePage> {
                         );
                       },
                     ),
+                    const SizedBox(height: 16),
                     HomeCardWidget(
                       icon: Icons.receipt_long_rounded,
                       title: "Records",
