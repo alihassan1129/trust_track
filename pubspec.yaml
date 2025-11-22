@@ -45,6 +45,8 @@ dependencies:
   path: ^1.8.2
   flutter_up: ^5.0.1
   intl: ^0.20.2
+  flutter_launcher_icons: ^0.14.3
+  names_launcher: ^0.0.2
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -76,6 +78,7 @@ flutter:
     - assets/
     - assets/images/
     - assets/images/logo.png
+    - assets/images/icon.png
 
   fonts:
     - family: Poppins
@@ -89,6 +92,19 @@ flutter:
           weight: 600
         - asset: assets/fonts/Sora-Bold.ttf
           weight: 700
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/icon.png"
+names_launcher:
+  name: "TrustTrack"
+  platforms:
+    android:
+      enable: true
+    ios:
+      enable: true
+
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
