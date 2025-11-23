@@ -370,7 +370,7 @@ class _AgentRecordsPageState extends State<AgentRecordsPage> {
                       children: [
                         Expanded(
                           child: _summaryCard(
-                            'Total Clients',
+                            'Clients',
                             '$totalClients',
                             Icons.people,
                             const Color(0xFF5D45DA),
@@ -392,7 +392,7 @@ class _AgentRecordsPageState extends State<AgentRecordsPage> {
                       children: [
                         Expanded(
                           child: _summaryCard(
-                            'Total Revenue',
+                            'Revenue',
                             _formatCurrency(totalRevenue),
                             Icons.attach_money,
                             const Color(0xFFFFA726),
@@ -401,7 +401,7 @@ class _AgentRecordsPageState extends State<AgentRecordsPage> {
                         const SizedBox(width: 12),
                         Expanded(
                           child: _summaryCard(
-                            'Total Commission',
+                            'Commission',
                             _formatCurrency(totalCommission),
                             Icons.monetization_on,
                             const Color(0xFF6C5CE7),

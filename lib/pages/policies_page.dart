@@ -685,31 +685,35 @@ class _PoliciesPageState extends State<PoliciesPage> {
                               ),
                               const SizedBox(height: 4),
                               if (_userRole == "client")
-                                ElevatedButton(
-                                  onPressed:
-                                      _subscribedPolicyIds.contains(policy.id)
-                                      ? null
-                                      : () => _showPaymentDialog(
-                                          policy,
-                                        ), // show payment dialog before subscribing
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor:
+                                SizedBox(
+                                  height: 36,
+                                  child: ElevatedButton(
+                                    onPressed:
                                         _subscribedPolicyIds.contains(policy.id)
-                                        ? Colors.grey
-                                        : const Color.fromARGB(
-                                            255,
-                                            93,
-                                            69,
-                                            218,
-                                          ),
-                                    foregroundColor: Colors.white,
-                                    minimumSize: const Size(80, 30),
-                                    padding: const EdgeInsets.all(8),
-                                  ),
-                                  child: Text(
-                                    isSubscribed ? "Subscribed" : "Subscribe",
-                                    style: const TextStyle(
-                                      fontFamily: "Poppins",
+                                        ? null
+                                        : () => _showPaymentDialog(
+                                            policy,
+                                          ), // show payment dialog before subscribing
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor:
+                                          _subscribedPolicyIds.contains(policy.id)
+                                          ? Colors.grey
+                                          : const Color.fromARGB(
+                                              255,
+                                              93,
+                                              69,
+                                              218,
+                                            ),
+                                      foregroundColor: Colors.white,
+                                      minimumSize: const Size(80, 30),
+                                      padding: const EdgeInsets.all(8),
+                                    ),
+                                    child: Text(
+                                      overflow: TextOverflow.ellipsis,
+                                      isSubscribed ? "Subscribed" : "Subscribe",
+                                      style: const TextStyle(
+                                        fontFamily: "Poppins",
+                                      ),
                                     ),
                                   ),
                                 ),
